@@ -6,4 +6,5 @@ class PostAdmin(admin.ModelAdmin):
   prepopulated_fields={"slug":("title",)}
   list_display=("slug","content")
 admin.site.register(post,PostAdmin)
+admin.site.register(Comment)
 # Register your models here.
