@@ -28,7 +28,7 @@ class post(models.Model):
   summary=models.TextField(max_length=500)
   content=models.TextField()
   tags=models.ManyToManyField(Tag,related_name="posts")
-  comment=GenericRelation(Comment)
+  comments=GenericRelation(Comment)
 
   def __str__(self):
     return self.title
