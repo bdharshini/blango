@@ -4,6 +4,7 @@ from blog.models import post
 from django.utils.html import escape
 from django.utils.html import format_html
 from django.utils.safestring import mark_safe
+import logging
 register=template.Library()
 user_model=get_user_model()#get user model instance
 #custom filter to return first and lastname else username as a link so that they can be emailed to when clicked
@@ -38,6 +39,8 @@ def endrow():
 @register.inclusion_tag("blog/post-list.html")
 def recent_posts(posts):
   p=post.objects.exclude(pk=posts.pk)[:5]
+  logger=logging.getLogger(__name__)
+  logger.debug("Loaded %d posts for post %d",len(p),post.pk)
   return {"title":"Recent posts","post":p}#always returns back a dictonary item
 
 
