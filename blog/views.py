@@ -10,7 +10,7 @@ from blog.forms import CommentForm
 def index(request):
   #from django.http import HttpResponse
   #return HttpResponse(str(request.user).encode("ascii"))
-  p=post.objects.filter(published_at__lte=timezone.now())
+  p=post.objects.filter(published_at__lte=timezone.now()).select_related("author")
   return render(request,"blog/index.html",{"posts":p})
 
 def post_detail(request,slug):
@@ -30,3 +30,7 @@ def post_detail(request,slug):
   else:
       comment_form = None
   return render(request,"blog/post-details.html",{"post":p,"comment_form":comment_form})
+
+def get_ip(request):
+  from django.http import HttpResponse
+  return HttpResponse(request.META['REMOTE_ADDR'])
