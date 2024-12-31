@@ -15,6 +15,7 @@ import os
 from configurations import Configuration
 from configurations import values
 class Dev(Configuration):
+    AUTH_USER_MODEL = "blango_auth.User"
     # Build paths inside the project like this: BASE_DIR / 'subdir'.
     BASE_DIR = Path(__file__).resolve().parent.parent
 
@@ -52,6 +53,7 @@ class Dev(Configuration):
         'crispy_forms',
         'crispy_bootstrap5',
         'debug_toolbar',
+        'blango_auth',
     ]
 
     MIDDLEWARE = [

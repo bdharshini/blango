@@ -12,6 +12,14 @@
     {{post.content|safe}}
   </div>
 {%endrow%}
+{%if post.author.profile%}
+  {%row%}
+    <div class="col">
+      <h4>Abt the Author</h4>
+      <p>{{post.author.profile.bio}}</p>
+    </div>
+  {%endrow%}
+{%endif%}
 {%include "blog/post-comments.html"%}
 {%row%}
   <div class="col">
